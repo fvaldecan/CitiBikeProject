@@ -1,0 +1,278 @@
+Create Tables:
+create table BikerInfo(
+bid varchar(10),
+usertype varchar(20),
+birthyear integer(4),
+gender integer(1),
+primary key(bid)
+);
+create table StationInfo(
+station_id varchar(10),
+station_long double precision not null,
+station_lat double precision not null,
+station_name varchar(45) not null,
+primary key(station_id)
+);
+
+create table StartInfo(
+bid varchar(10),
+starttime varchar(20),
+startstation_id varchar(10),
+primary key(bid),
+foreign key(startstation_id) references StationInfo(station_id) on delete cascade,
+foreign key(bid) references BikerInfo(bid) on delete cascade
+);
+create table EndInfo(
+bid varchar(10),
+stoptime varchar(20),
+tripdur varchar(10),
+endstation_id varchar(10),
+primary key(bid),
+foreign key(endstation_id) references StationInfo(station_id) on delete cascade,
+foreign key(bid) references BikerInfo(bid) on delete cascade
+);
+
+Populating the Tables:
+insert into BikerInfo values ('15745','Subscriber',1988,1);
+insert into BikerInfo values ('15747','Subscriber',1997,2);
+insert into BikerInfo values ('16726','Customer',1969,0);
+insert into BikerInfo values ('16773','Subscriber',1983,1);
+insert into BikerInfo values ('17360','Customer',1987,1);
+insert into BikerInfo values ('17716','Subscriber',1993,1);
+insert into BikerInfo values ('17845','Customer',1994,1);
+insert into BikerInfo values ('17996','Subscriber',1988,2);
+insert into BikerInfo values ('18612','Customer',1969,0);
+insert into BikerInfo values ('18964','Customer',1985,1);
+insert into BikerInfo values ('20508','Subscriber',1974,2);
+insert into BikerInfo values ('20943','Customer',1994,1);
+insert into BikerInfo values ('21338','Subscriber',1981,2);
+insert into BikerInfo values ('21632','Subscriber',1990,1);
+insert into BikerInfo values ('21693','Subscriber',1977,2);
+insert into BikerInfo values ('21698','Customer',1971,1);
+insert into BikerInfo values ('24913','Subscriber',1997,1);
+insert into BikerInfo values ('25039','Subscriber',1982,1);
+insert into BikerInfo values ('25042','Subscriber',1989,1);
+insert into BikerInfo values ('25552','Subscriber',1985,1);
+insert into BikerInfo values ('25577','Subscriber',1980,1);
+insert into BikerInfo values ('25970','Customer',1969,0);
+insert into BikerInfo values ('26401','Subscriber',1976,2);
+insert into BikerInfo values ('26483','Subscriber',1985,2);
+insert into BikerInfo values ('27107','Subscriber',1996,1);
+insert into BikerInfo values ('28749','Subscriber',1988,2);
+insert into BikerInfo values ('28866','Subscriber',1984,2);
+insert into BikerInfo values ('29156','Subscriber',1992,1);
+insert into BikerInfo values ('29390','Subscriber',1982,1);
+insert into BikerInfo values ('29786','Subscriber',1984,1);
+insert into BikerInfo values ('29789','Subscriber',1989,1);
+insert into BikerInfo values ('29857','Subscriber',1965,1);
+insert into BikerInfo values ('29908','Subscriber',1996,1);
+insert into BikerInfo values ('29975','Subscriber',1984,1);
+insert into BikerInfo values ('30496','Subscriber',1975,1);
+insert into BikerInfo values ('31497','Subscriber',1993,1);
+insert into BikerInfo values ('32175','Subscriber',1982,1);
+insert into BikerInfo values ('32191','Subscriber',1995,1);
+insert into BikerInfo values ('32221','Subscriber',1996,1);
+insert into BikerInfo values ('32520','Subscriber',1989,2);
+insert into BikerInfo values ('32782','Subscriber',1986,1);
+insert into BikerInfo values ('32861','Subscriber',1991,1);
+insert into BikerInfo values ('33149','Subscriber',1968,1);
+insert into BikerInfo values ('33686','Subscriber',1997,1);
+insert into BikerInfo values ('33723','Subscriber',1983,1);
+insert into BikerInfo values ('33931','Subscriber',1961,1);
+insert into BikerInfo values ('34020','Subscriber',1990,2);
+insert into BikerInfo values ('34042','Subscriber',1966,1);
+insert into BikerInfo values ('34377','Subscriber',1969,0);
+insert into BikerInfo values ('34394','Customer',1981,1);
+
+insert into StationInfo values ('151',40.72210379 ,-73.99724901,'Cleveland Pl & Spring St ');
+insert into StationInfo values ('236',40.7284186 ,-73.98713956,'St Marks Pl & 2 Ave ');
+insert into StationInfo values ('238',40.7361967 ,-74.00859207,'Bank St & Washington St ');
+insert into StationInfo values ('239',40.69196566 ,-73.9813018,'Willoughby St & Fleet St ');
+insert into StationInfo values ('251',40.72317958 ,-73.99480012,'Mott St & Prince St ');
+insert into StationInfo values ('252',40.73226398 ,-73.99852205,'MacDougal St & Washington Sq ');
+insert into StationInfo values ('261',40.69474881 ,-73.98362464,'Johnson St & Gold St ');
+insert into StationInfo values ('274',40.68691865 ,-73.976682,'Lafayette Ave & Fort Greene Pl ');
+insert into StationInfo values ('285',40.73454567 ,-73.99074142,'Broadway & E 14 St ');
+insert into StationInfo values ('293',40.73020661 ,-73.99102628,'Lafayette St & E 8 St ');
+insert into StationInfo values ('302',40.72082834 ,-73.97793172,'Avenue D & E 3 St ');
+insert into StationInfo values ('307',40.71427487 ,-73.98990025,'Canal St & Rutgers St ');
+insert into StationInfo values ('308',40.71307916 ,-73.99851193,'St James Pl & Oliver St ');
+insert into StationInfo values ('314',40.69383 ,-73.990539,'Cadman Plaza West & Montague St ');
+insert into StationInfo values ('317',40.72453734 ,-73.98185424,'E 6 St & Avenue B ');
+insert into StationInfo values ('319',40.711066 ,-74.009447,'Fulton St & Broadway ');
+insert into StationInfo values ('334',40.74238787 ,-73.99726235,'W 20 St & 7 Ave ');
+insert into StationInfo values ('336',40.73047747 ,-73.99906065,'Sullivan St & Washington Sq ');
+insert into StationInfo values ('345',40.73649403 ,-73.99704374,'W 13 St & 6 Ave ');
+insert into StationInfo values ('350',40.71559509 ,-73.9870295,'Clinton St & Grand St ');
+insert into StationInfo values ('356',40.71622644 ,-73.98261206,'Bialystoker Pl & Delancey St ');
+insert into StationInfo values ('358',40.73291553 ,-74.00711384,'Christopher St & Greenwich St ');
+insert into StationInfo values ('363',40.70834698 ,-74.01713445,'West Thames St ');
+insert into StationInfo values ('366',40.693261 ,-73.968896,'Clinton Ave & Myrtle Ave ');
+insert into StationInfo values ('372',40.69454609 ,-73.95801365,'Franklin Ave & Myrtle Ave ');
+insert into StationInfo values ('379',40.749156 ,-73.9916,'W 31 St & 7 Ave ');
+insert into StationInfo values ('380',40.73401143 ,-74.00293877,'W 4 St & 7 Ave S ');
+insert into StationInfo values ('383',40.735238 ,-74.000271,'Greenwich Ave & Charles St ');
+insert into StationInfo values ('388',40.74971775 ,-74.00295035,'W 26 St & 10 Ave ');
+insert into StationInfo values ('403',40.72502876 ,-73.99069656,'E 2 St & 2 Ave ');
+insert into StationInfo values ('405',40.739323 ,-74.008119,'Washington St & Gansevoort St ');
+insert into StationInfo values ('412',40.7158155 ,-73.99422366,'Forsyth St & Canal St ');
+insert into StationInfo values ('426',40.71754834 ,-74.01322069,'West St & Chambers St ');
+insert into StationInfo values ('433',40.72955361 ,-73.98057249,'E 13 St & Avenue A ');
+insert into StationInfo values ('438',40.72779126 ,-73.98564945,'St Marks Pl & 1 Ave ');
+insert into StationInfo values ('450',40.76227205 ,-73.98788205,'W 49 St & 8 Ave ');
+insert into StationInfo values ('453',40.74475148 ,-73.99915362,'W 22 St & 8 Ave ');
+insert into StationInfo values ('458',40.751396 ,-74.005226,'11 Ave & W 27 St ');
+insert into StationInfo values ('470',40.74345335 ,-74.00004031,'W 20 St & 8 Ave ');
+insert into StationInfo values ('473',40.72110063 ,-73.9919254,'Rivington St & Chrystie St ');
+insert into StationInfo values ('479',40.76019252 ,-73.9912551,'9 Ave & W 45 St ');
+insert into StationInfo values ('481',40.71260486 ,-73.96264403,'S 3 St & Bedford Ave ');
+insert into StationInfo values ('493',40.7568001 ,-73.98291153,'W 45 St & 6 Ave ');
+insert into StationInfo values ('500',40.76228826 ,-73.98336183,'Broadway & W 51 St ');
+insert into StationInfo values ('504',40.73221853 ,-73.98165557,'1 Ave & E 16 St ');
+insert into StationInfo values ('532',40.710451 ,-73.960876,'S 5 Pl & S 5 St ');
+insert into StationInfo values ('3002',40.711512 ,-74.015756,'South End Ave & Liberty St ');
+insert into StationInfo values ('3059',40.6933982 ,-73.939877,'Pulaski St & Marcus Garvey Blvd ');
+insert into StationInfo values ('3077',40.70877084 ,-73.95095259,'Stagg St & Union Ave ');
+insert into StationInfo values ('3090',40.71774592 ,-73.95600096,'N 8 St & Driggs Ave ');
+insert into StationInfo values ('3107',40.72311651 ,-73.95212324,'Bedford Ave & Nassau Ave ');
+insert into StationInfo values ('3115',40.73232194 ,-73.9550858,'India St & Manhattan Ave ');
+insert into StationInfo values ('3124',40.74731 ,-73.95451,'46 Ave & 5 St ');
+insert into StationInfo values ('3126',40.74718234 ,-73.9432635,'44 Dr & Jackson Ave ');
+insert into StationInfo values ('3134',40.76312584 ,-73.96526895,'3 Ave & E 62 St ');
+insert into StationInfo values ('3142',40.7612274 ,-73.96094022,'1 Ave & E 62 St ');
+insert into StationInfo values ('3223',40.75899656 ,-73.96865398,'E 55 St & 3 Ave ');
+insert into StationInfo values ('3242',40.69102926 ,-73.99183363,'Schermerhorn St & Court St ');
+insert into StationInfo values ('3256',40.72771408 ,-74.01129574,'Pier 40 - Hudson River Park ');
+insert into StationInfo values ('3364',40.6751622 ,-73.9814832,'Carroll St & 5 Ave ');
+insert into StationInfo values ('3376',40.76471852 ,-73.9622207,'E 65 St & 2 Ave ');
+insert into StationInfo values ('3384',40.6787242 ,-73.99599099,'Smith St & 3 St ');
+insert into StationInfo values ('3389',40.6830456 ,-74.00348559,'Carroll St & Columbia St ');
+insert into StationInfo values ('3396',40.6783563 ,-74.00014502,'Clinton St & 4 Place ');
+insert into StationInfo values ('3509',40.8011939 ,-73.9500739,'Lenox Ave & W 115 St ');
+insert into StationInfo values ('3518',40.808442 ,-73.9452087,'Lenox Ave & W 126 St ');
+insert into StationInfo values ('3521',40.7987859 ,-73.9523,'Lenox Ave & W 111 St ');
+insert into StationInfo values ('3526',40.7747878 ,-73.9125551,'31 St & 23 Ave ');
+insert into StationInfo values ('3532',40.78145 ,-73.9183302,'Ditmars Blvd & 19 St ');
+insert into StationInfo values ('3539',40.8067581 ,-73.9607082,'W 116 St & Amsterdam Ave ');
+insert into StationInfo values ('3556',40.7527085 ,-73.9397405,'24 St & 41 Ave ');
+insert into StationInfo values ('3558',40.6794388 ,-73.9680438,'Bergen St & Vanderbilt Ave ');
+insert into StationInfo values ('3561',40.7531106 ,-73.9279917,'37 Ave & 35 St ');
+insert into StationInfo values ('3581',40.6740123 ,-73.9671457,'Underhill Ave & Lincoln Pl ');
+insert into StationInfo values ('3597',40.7577284 ,-73.9166368,'43 St & Broadway ');
+insert into StationInfo values ('3602',40.763154 ,-73.920827,'31 Ave & 34 St ');
+insert into StationInfo values ('3611',40.7449067 ,-73.9534573,'Vernon Blvd & 47 Rd ');
+insert into StationInfo values ('3659',40.74294892 ,-74.00413692,'W 17 St & 9 Ave ');
+insert into StationInfo values ('3690',40.71334184 ,-74.00935516,'Park Pl & Church St ');
+
+insert into StartInfo values('25577','12:00:05AM','252 ');
+insert into StartInfo values('15745','12:02:34AM','261 ');
+insert into StartInfo values('15747','12:02:58AM','236 ');
+insert into StartInfo values('16726','12:02:43AM','3256 ');
+insert into StartInfo values('16773','12:01:19AM','479 ');
+insert into StartInfo values('17360','12:01:20AM','3558 ');
+insert into StartInfo values('17716','12:02:55AM','412 ');
+insert into StartInfo values('17845','12:03:55AM','3602 ');
+insert into StartInfo values('17996','12:03:40AM','3526 ');
+insert into StartInfo values('18612','12:03:53AM','3256 ');
+insert into StartInfo values('18964','12:01:29AM','3107 ');
+insert into StartInfo values('20508','12:00:42AM','319 ');
+insert into StartInfo values('20943','12:00:27AM','345 ');
+insert into StartInfo values('21338','12:02:53AM','3090 ');
+insert into StartInfo values('21632','12:00:46AM','3077 ');
+insert into StartInfo values('21693','12:00:29AM','3142 ');
+insert into StartInfo values('21698','12:01:12AM','500 ');
+insert into StartInfo values('24913','12:02:53AM','532 ');
+insert into StartInfo values('25039','12:00:31AM','285 ');
+insert into StartInfo values('25042','12:03:19AM','336 ');
+insert into StartInfo values('25552','12:01:47AM','3384 ');
+insert into StartInfo values('25970','12:03:37AM','3521 ');
+insert into StartInfo values('26401','12:02:40AM','453 ');
+insert into StartInfo values('26483','12:02:07AM','302 ');
+insert into StartInfo values('27107','12:02:30AM','3561 ');
+insert into StartInfo values('28749','12:03:18AM','3364 ');
+insert into StartInfo values('28866','12:00:22AM','308 ');
+insert into StartInfo values('29156','12:03:14AM','504 ');
+insert into StartInfo values('29390','12:02:23AM','379 ');
+insert into StartInfo values('29786','12:01:33AM','350 ');
+insert into StartInfo values('29789','12:00:27AM','3526 ');
+insert into StartInfo values('29857','12:03:42AM','251 ');
+insert into StartInfo values('29908','12:03:58AM','3223 ');
+insert into StartInfo values('29975','12:03:21AM','3611 ');
+insert into StartInfo values('30496','12:00:21AM','3142 ');
+insert into StartInfo values('31497','12:00:45AM','3509 ');
+insert into StartInfo values('32175','12:02:04AM','350 ');
+insert into StartInfo values('32191','12:01:16AM','3134 ');
+insert into StartInfo values('32221','12:02:54AM','532 ');
+insert into StartInfo values('32520','12:02:58AM','293 ');
+insert into StartInfo values('32782','12:02:46AM','3126 ');
+insert into StartInfo values('32861','12:00:31AM','358 ');
+insert into StartInfo values('33149','12:02:21AM','438 ');
+insert into StartInfo values('33686','12:02:20AM','236 ');
+insert into StartInfo values('33723','12:03:41AM','3526 ');
+insert into StartInfo values('33931','12:02:57AM','317 ');
+insert into StartInfo values('34020','12:03:56AM','151 ');
+insert into StartInfo values('34042','12:02:40AM','3002 ');
+insert into StartInfo values('34377','12:00:11AM','314 ');
+insert into StartInfo values('34394','12:03:07AM','3556 ');
+
+insert into EndInfo values('25577','12:27:21AM','1635 ','366 ');
+insert into EndInfo values('34377','12:02:23AM','132 ','3242 ');
+insert into EndInfo values('30496','12:55:59AM','3337 ','3384 ');
+insert into EndInfo values('28866','12:07:39AM','436 ','3690 ');
+insert into EndInfo values('20943','12:21:25AM','8457 ','380 ');
+insert into EndInfo values('21693','12:55:56AM','3326 ','3384 ');
+insert into EndInfo values('29789','12:04:21AM','233 ','3532 ');
+insert into EndInfo values('32861','12:05:17AM','285 ','405 ');
+insert into EndInfo values('25039','12:19:19AM','1127 ','405 ');
+insert into EndInfo values('20508','12:07:46AM','423 ','426 ');
+insert into EndInfo values('31497','12:06:12AM','327 ','3518 ');
+insert into EndInfo values('21632','12:09:47AM','541 ','3059 ');
+insert into EndInfo values('21698','12:10:07AM','535 ','493 ');
+insert into EndInfo values('32191','12:03:44AM','147 ','3376 ');
+insert into EndInfo values('16773','12:08:54AM','454 ','458 ');
+insert into EndInfo values('17360','12:16:13AM','893 ','3396 ');
+insert into EndInfo values('18964','12:20:28AM','1138 ','372 ');
+insert into EndInfo values('29786','12:08:14AM','401 ','473 ');
+insert into EndInfo values('25552','12:07:40AM','353 ','3389 ');
+insert into EndInfo values('32175','12:06:16AM','252 ','308 ');
+insert into EndInfo values('26483','12:28:33AM','1585 ','388 ');
+insert into EndInfo values('33686','12:06:58AM','278 ','473 ');
+insert into EndInfo values('29390','12:05:56AM','213 ','334 ');
+insert into EndInfo values('33149','12:23:12AM','1250 ','383 ');
+insert into EndInfo values('27107','12:12:52AM','622 ','3561 ');
+insert into EndInfo values('15745','12:05:54AM','199 ','239 ');
+insert into EndInfo values('34042','12:05:02AM','141 ','363 ');
+insert into EndInfo values('26401','12:04:28AM','107 ','470 ');
+insert into EndInfo values('16726','12:10:11AM','447 ','238 ');
+insert into EndInfo values('32782','12:22:18AM','1172 ','3597 ');
+insert into EndInfo values('24913','12:20:05AM','1031 ','403 ');
+insert into EndInfo values('32221','12:20:02AM','1028 ','403 ');
+insert into EndInfo values('21338','12:08:12AM','318 ','481 ');
+insert into EndInfo values('17716','12:08:59AM','363 ','319 ');
+insert into EndInfo values('33931','12:09:03AM','366 ','356 ');
+insert into EndInfo values('32520','12:09:10AM','372 ','433 ');
+insert into EndInfo values('15747','12:08:03AM','304 ','317 ');
+insert into EndInfo values('34394','12:52:35AM','2968 ','3581 ');
+insert into EndInfo values('29156','12:16:04AM','769 ','307 ');
+insert into EndInfo values('28749','12:12:21AM','543 ','274 ');
+insert into EndInfo values('25042','12:34:43AM','1884 ','3124 ');
+insert into EndInfo values('29975','12:10:10AM','409 ','3115 ');
+insert into EndInfo values('25970','12:16:21AM','764 ','3539 ');
+insert into EndInfo values('17996','12:09:28AM','347 ','3532 ');
+insert into EndInfo values('33723','12:09:07AM','326 ','3532 ');
+insert into EndInfo values('29857','12:39:28AM','2146 ','450 ');
+insert into EndInfo values('18612','12:10:02AM','369 ','238 ');
+insert into EndInfo values('17845','12:28:55AM','1500 ','3526 ');
+insert into EndInfo values('34020','12:18:32AM','875 ','3659 ');
+insert into EndInfo values('29908','12:21:36AM','1058 ','236 ');
+
+1.
+2. Select count(bid) from BikerInfo where gender = 1 && birthyear < 1968;
+3. Select tripdur, BikerInfo.usertype from EndInfo join BikerInfo using(bid) order by BikerInfo.usertype;
+4.
+5.
+6. 
+7. Select count(station_id) as roundtrips from StartInfo join EndInfo using(bid) where startstation_id = endstation_id;
+8.
+9.Select count(bid) from BikerInfo where gender = 2 && birthyear > 1999 && birthyear < 2006;
+10. Select count(bid) from StartInfo join EndInfo using(bid) where startstation_id = endstation_id or tripdur < 90;
